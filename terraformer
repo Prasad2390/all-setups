@@ -3,6 +3,14 @@ chmod +x terraformer-all-linux-amd64
 sudo mv terraformer-all-linux-amd64 /usr/local/bin/terraformer
 terraformer --version
 
+
+mkdir -p ~/.terraform.d/plugins/linux_amd64
+wget https://releases.hashicorp.com/terraform-provider-aws/5.45.0/terraform-provider-aws_5.45.0_linux_amd64.zip
+unzip terraform-provider-aws_5.45.0_linux_amd64.zip
+mv terraform-provider-aws* ~/.terraform.d/plugins/linux_amd64/
+chmod +x ~/.terraform.d/plugins/linux_amd64/terraform-provider-aws*
+export PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugins"
+
 COMMAND: terraformer import aws --resources=sg,ec2_instance,elb --regions=us-east-1
 UPDATE PROVIDERS IN STATE FILE:
 terraform state replace-provider -- -/aws hashicorp/aws
