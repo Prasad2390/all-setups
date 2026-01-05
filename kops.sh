@@ -15,3 +15,4 @@ aws s3api put-bucket-versioning --bucket mustafa.project.flm.k8s.local --region 
 export KOPS_STATE_STORE=s3://prasad..flm.k8s
 kops create cluster --name prasad.k8s.local --zones us-east-1a,us-east-1b --master-count=1 --master-size c7i-flex.large --master-volume-size=25 --node-count=2 --node-size t2.small --node-volume-size=20
 kops update cluster --name prasad.k8s.local --yes --admin
+kops delete cluster prasad.k8s.local --yes
