@@ -16,3 +16,9 @@ export KOPS_STATE_STORE=s3://prasad.flm.k8s
 kops create cluster --name prasad.k8s.local --zones us-east-1a,us-east-1b --master-count=1 --master-size c7i-flex.large --master-volume-size=25 --node-count=2 --node-size t3.small --node-volume-size=20
 kops update cluster --name prasad.k8s.local --yes --admin
 kops delete cluster prasad.k8s.local --yes
+
+Suggestions:
+ * list clusters with: kops get cluster
+ * edit this cluster with: kops edit cluster prasad.k8s.local
+ * edit your node instance group: kops edit ig --name=prasad.k8s.local nodes-us-east-1a
+ * edit your control-plane instance group: kops edit ig --name=prasad.k8s.local control-plane-us-east-1a
